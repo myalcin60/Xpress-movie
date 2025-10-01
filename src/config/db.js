@@ -1,5 +1,6 @@
 import mysql from 'mysql2';
 
+
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -15,3 +16,4 @@ connection.connect((err) => {
     console.log('MySQL veritabanına başarıyla bağlandı!');
   }
 });
+export default connection;

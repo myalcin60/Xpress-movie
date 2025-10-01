@@ -23,7 +23,7 @@ export default function SaveFilm() {
     const saveFilm = async (event) => {
         event.preventDefault();
         try {
-            const res = await axios.post('http://localhost:3000/api/films', {
+            const res = await axios.post('/api/films', {
                 genre: genre.current?.value?.trim(),
                 titre: titre.current?.value?.trim(),
                 description: description.current?.value?.trim(),
