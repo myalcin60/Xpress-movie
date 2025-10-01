@@ -88,12 +88,12 @@
 
 import express from 'express';
 import 'dotenv/config';
-import session from 'express-session';
+
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-
-import MySQLStore from 'express-mysql-session';
+// import session from 'express-session';
+// import MySQLStore from 'express-mysql-session';
 
 
 import userRouter from './src/routes/auth.route.js';
@@ -114,20 +114,20 @@ app.use(cors({
 }));
 
 // Session store yapılandırması
-const sessionStore = new MySQLStore({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
-});
+// const sessionStore = new MySQLStore({
+//   host: process.env.DB_HOST,
+//   port: process.env.DB_PORT,
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PASSWORD,
+//   database: process.env.DB_NAME
+// });
 
-// Session ayarı
-app.use(session({
-  secret: 'express-ejs',
-  resave: false,
-  saveUninitialized: false
-}));
+// // Session ayarı
+// app.use(session({
+//   secret: 'express-ejs',
+//   resave: false,
+//   saveUninitialized: false
+// }));
 
 // Kullanıcı bilgisini her istekte erişilebilir hale getir
 app.use((req, res, next) => {
