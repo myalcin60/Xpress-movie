@@ -163,8 +163,8 @@ app.get('/favori', (req, res) => res.render('favori'));
 app.get('/search', (req, res) => res.render('search'));
 
 // 404 sayfası
-app.all('*', (req, res) => {
-  res.status(404).end('Page introuvable');
+app.all(/.*/, (req, res) => {
+  res.status(404).end("Page introuvable");
 });
 
 // Sunucu başlatma
