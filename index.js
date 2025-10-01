@@ -92,6 +92,10 @@ import session from 'express-session';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import session from 'express-session';
+import MySQLStore from 'express-mysql-session';
+
+
 import userRouter from './src/routes/auth.route.js';
 import filmRouter from './src/routes/film.route.js';
 import favoriRouter from './src/routes/favori.route.js';
@@ -109,9 +113,18 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 
+// Session store yapılandırması
+const sessionStore = new MySQLStore({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
+});
+
 // Session ayarı
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'default-secret',
+  secret: 'express-ejs',
   resave: false,
   saveUninitialized: false
 }));
@@ -150,7 +163,7 @@ app.get('/favori', (req, res) => res.render('favori'));
 app.get('/search', (req, res) => res.render('search'));
 
 // 404 sayfası
-app.all('/*', (req, res) => {
+app.all('*', (req, res) => {
   res.status(404).end('Page introuvable');
 });
 
