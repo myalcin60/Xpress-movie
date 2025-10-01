@@ -130,10 +130,10 @@ app.use(cors({
 // }));
 
 // Kullanıcı bilgisini her istekte erişilebilir hale getir
-app.use((req, res, next) => {
-  res.locals.user = req.session.user || null;
-  next();
-});
+// app.use((req, res, next) => {
+//   res.locals.user = req.session.user || null;
+//   next();
+// });
 
 // Body parser
 app.use(express.urlencoded({ extended: true }));
