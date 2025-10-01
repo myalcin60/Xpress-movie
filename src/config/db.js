@@ -1,6 +1,6 @@
-import mysql from 'mysql2';
+import mysql from "mysql2";
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -10,9 +10,13 @@ const connection = mysql.createConnection({
     queueLimit: 0
 });
 
-connection.connect(err => {
-    if (err) console.error('Erreur de connexion à MySQL:', err);
-    else console.log('Connecté à MySQL !');
+connection.getConnection((err, conn) => {
+    if (err) console.error("MySQL connection error:", err);
+    else {
+        console.log("Connected to MySQL!");
+        conn.release();
+    }
 });
 
 export default connection;
+
