@@ -92,7 +92,7 @@ import session from 'express-session';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import session from 'express-session';
+
 import MySQLStore from 'express-mysql-session';
 
 
