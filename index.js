@@ -13,13 +13,13 @@ import cors from "cors";
 
 const app = express()
 
-app.use (cors());
+// app.use (cors());
 
-// app.use(cors({
-//     origin: 'https://iridescent-nougat-a6bede.netlify.app/',
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     credentials: true
-// }));
+app.use(cors({
+    origin: 'https://iridescent-nougat-a6bede.netlify.app/',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
 // configurer la session
 app.use(session({
     secret: 'express-ejs',
@@ -84,15 +84,13 @@ app.all("/*splat", (req, res) => {
         .end("Page introuvable")
 })
 
+
+
 const PORT = process.env.PORT || 5000;
-app.get("/", (req, res) => {
-    res.send("Backend is working!");
-});
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+app.get("/", (req, res) => res.send("Backend is working!"));
 
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
 // const PORT = process.env.PORT || 5555
 
 // app.listen(PORT, () => {
