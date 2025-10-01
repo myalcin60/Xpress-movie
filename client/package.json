@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "nodemon index.js",
     "dev": "concurrently \"vite --open\" \"cd .. && nodemon . \"",
     "build": "vite build",
     "lint": "eslint .",
