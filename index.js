@@ -162,6 +162,11 @@ app.get('/signup', (req, res) => res.render('signup'));
 app.get('/favori', (req, res) => res.render('favori'));
 app.get('/search', (req, res) => res.render('search'));
 
+app.post('/api/test', (req, res) => {
+  res.json({ message: 'API çalışıyor!' });
+});
+
+
 // 404 sayfası
 app.all(/.*/, (req, res) => {
   res.status(404).end("Page introuvable");
