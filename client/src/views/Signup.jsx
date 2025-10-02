@@ -9,7 +9,7 @@ export default function Signup() {
 
     async function connexion(formData) {  
         try {
-            await axios.post("/api/signup", formData);
+            await axios.post("https://xpressmoviee.netlify.app/api/signup", formData);
             navigate("/login");
             reset();
         } catch (err) {
