@@ -4,12 +4,16 @@ import connection from '../config/db.js'
 
 
 const save = async (user) => {
+    console.log('repo req user', user);
+    
     const saltRounds = 10;
     const password = await bcrypt.hash(user.password, saltRounds);
     try {
         const INSERT = "INSERT INTO users values (null, ?, ?, ?,?,?)"
         const resultat = await connection.query(INSERT, [user.nom, user.prenom, user.email, password, user.role]);
         user.id = resultat[0].insertId
+        console.log('response repo user', user);
+        
         return user;
     } catch (error) {
         console.log(error);

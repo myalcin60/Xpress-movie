@@ -4,7 +4,7 @@ import filmRepository from '../repositories/film.repository.js'
 import bcrypt from "bcrypt";
 
 const signup = async (req, res, next) => {
-
+    
     const user = await userRepository.save(req.body)
     try {
         if (user == null) {

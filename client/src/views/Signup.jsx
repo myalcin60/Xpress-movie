@@ -8,8 +8,10 @@ export default function Signup() {
     const navigate = useNavigate();
 
     async function connexion(formData) {  
+        console.log('fromdata', formData);
+        
         try {
-            await axios.post("https://xpressmoviee.netlify.app/api/signup", formData);
+            await axios.post("/api/signup", formData);
             navigate("/login");
             reset();
         } catch (err) {
