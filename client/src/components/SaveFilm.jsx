@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "../../axios.config";
 import { useRef, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { GlobalContext } from "../contexts/GlobalContext.jsx";
