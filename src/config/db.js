@@ -21,7 +21,7 @@ import mysql from 'mysql2/promise';
 
 
 
-const connection = mysql.createConnection({
+const connectionPromise = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -31,7 +31,7 @@ const connection = mysql.createConnection({
 
 (async () => {
   try {
-    const conn = await connection;
+    const conn = await connectionPromise;
   
     await conn.query('SELECT 1');
     console.log('Successfully connected to MySQL database!');
@@ -43,4 +43,4 @@ const connection = mysql.createConnection({
   }
 })();
 
-export default connection;
+export default connectionPromise;
