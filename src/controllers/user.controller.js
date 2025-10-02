@@ -24,6 +24,7 @@ const signup = async (req, res, next) => {
     }
 }
 
+
 const login = async (req, res, next) => {
     const user = await userRepository.getUser(req.body.email)
     try {
