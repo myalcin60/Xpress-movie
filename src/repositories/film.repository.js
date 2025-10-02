@@ -1,6 +1,9 @@
 import connection from '../config/db.config.js';
+import connectionPromise from '../config/db.js'
 
 const save = async (film, user_id) => {
+    const connection = await connectionPromise;
+  
     try {
         const INSERT = "INSERT INTO films values (null, ?, ?, ?,?,?,?)"
         const resultat = await connection.query(INSERT, [film.titre, film.genre, film.description, film.date, film.image, user_id]);
@@ -14,6 +17,7 @@ const save = async (film, user_id) => {
 }
 
 const findAllFilm = async () => {
+     const connection = await connectionPromise;
     try {
         const SELECT = "SELECT * from films"
         const [films] = await connection.query(SELECT)
@@ -26,6 +30,7 @@ const findAllFilm = async () => {
 }
 
 const findAdminFilm= async ( user_id) => {
+     const connection = await connectionPromise;
     try {
         const SELECT = "SELECT * from films where  user_id=?"
         const [film] = await connection.query(SELECT, [user_id])
@@ -36,6 +41,7 @@ const findAdminFilm= async ( user_id) => {
     }
 }
 const deleteFilmById = async (id) => {
+     const connection = await connectionPromise;
     try {
         const DELETE = "Delete from films where id=?"
         await connection.query(DELETE, id);
@@ -46,6 +52,7 @@ const deleteFilmById = async (id) => {
     }
 }
 const deleteFilmByUserId = async (id) => {
+     const connection = await connectionPromise;
     try {
         const DELETE = "Delete from films where user_id=?"
         await connection.query(DELETE, id);
@@ -57,6 +64,7 @@ const deleteFilmByUserId = async (id) => {
 }
 
 const updateFilmById = async(film, id)=> {
+     const connection = await connectionPromise;
     try {
         const UPDATE = "UPDATE films set genre=?, titre= ?, description= ?, date_sortie= ?, image= ?  where id =?"
         const resultat = await connection.query(UPDATE, [film.genre, film.titre, film.description, film.date_sortie, film.image, id]);
@@ -69,7 +77,8 @@ const updateFilmById = async(film, id)=> {
 // film search
 const searchFilms = async(text)=>{
 
-  try {
+   const connection = await connectionPromise;
+    try {
         const SELECT = "SELECT * FROM films WHERE titre LIKE ? OR genre LIKE ?"
         const [film] = await connection.query(SELECT, [`%${text}%`, `%${text}%`])
         return film;
