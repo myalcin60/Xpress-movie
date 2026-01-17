@@ -1,6 +1,8 @@
 import connection from '../config/db.js';
 //import connection from '../config/db.config.js';
 import connectionPromise from '../config/db.js'
+
+
 const addFavorie = async( film_id,user_id)=>{
   const connection = await connectionPromise;
     try {

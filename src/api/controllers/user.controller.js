@@ -5,9 +5,7 @@ const saveUser = async (req, res) => {
      console.log('controler req', req.body);
     const user = await userRepository.save(req.body);
     console.log('res contrll user', user);
-    
     return res.sendStatus(200);
-
 }
 
 const login = async (req, res) => {

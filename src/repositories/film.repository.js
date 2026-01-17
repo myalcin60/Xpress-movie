@@ -1,6 +1,6 @@
-
 import connection from '../config/db.js';
 //import connection from '../config/db.config.js'
+import connectionPromise from '../config/db.js'
 
 const save = async (film, user_id) => {
     const connection = await connectionPromise;
