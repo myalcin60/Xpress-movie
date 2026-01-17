@@ -5,12 +5,12 @@ import { GlobalContext } from "../contexts/GlobalContext";
 
 
 export default function FilmCard() {
-   
-    const { films, setFilms, userInfo, setUserInfo }= useContext(GlobalContext)
-    const [erreur, setErreur] = useState()
-    const navigate = useNavigate();   
 
-    async function addFavori(filmId) {   
+    const { films, setFilms, userInfo, setUserInfo } = useContext(GlobalContext)
+    const [erreur, setErreur] = useState()
+    const navigate = useNavigate();
+
+    async function addFavori(filmId) {
         if (!userInfo) {
             alert('Please login to add a movie to your favorites.')
             navigate('/login')
@@ -19,24 +19,18 @@ export default function FilmCard() {
                 userId: userInfo.id,
                 filmId: filmId
             })
-       
         }
-
     }
-
     return (
         <div className="container p-1 w-100 mt-5 text-light border rounded bg-dark justify-content-center align-items-center">
             <h3>Liste de films</h3>
-
             <div className="row m-3 ">
                 {!erreur && films &&
                     films.map((f, ind) =>
-                        //  let link=`/admin/favori/${f.id}`
                         <div key={f.id} className=" col-12 col-sm-6 col-md-3 mb-4 ">
                             <div className="card h-70 ">
                                 <img src={new URL(`../assets/${f.image}`, import.meta.url).href} className="card-img-top" alt="film" height="200px" />
                                 <div className="card-body">
-                                
                                     <h5 className="card-title fs-5 fs-md-4 fs-lg-3" >
                                         {f.genre}
                                     </h5>
@@ -49,21 +43,14 @@ export default function FilmCard() {
                                     <h5 className="card-text fs-5 fs-md-4 fs-lg-3">
                                         {f.description}
                                     </h5>
-                                    <button onClick={()=>addFavori(f.id)} className="btn btn-primary">Ajouter à Favorie</button>
+                                    <button onClick={() => addFavori(f.id)} className="btn btn-primary">Ajouter à Favorie</button>
                                 </div >
                             </div >
                         </div >
                     )
                 }
-
             </div >
-
-
-
         </div>
-
-
     )
-
 }
 

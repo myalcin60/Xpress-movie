@@ -5,7 +5,7 @@ import { GlobalContext } from "../contexts/GlobalContext";
 
 
 export default function Login() {
-        const { userInfo, setUserInfo } = useContext(GlobalContext)
+    const { userInfo, setUserInfo } = useContext(GlobalContext)
     const email = useRef();
     const password = useRef();
     const navigate = useNavigate();
@@ -19,7 +19,6 @@ export default function Login() {
             });
             const userData = res.data.user;
             setUserInfo(userData)
-            // localStorage.setItem("user", JSON.stringify(userData));  // localStorage'a kaydet
             navigate("/dashboard");
         } catch (error) {
             console.error(error);

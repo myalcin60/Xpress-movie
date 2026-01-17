@@ -72,7 +72,6 @@
 
 
 
-
 // app.all("/*splat", (req, res) => {
 //     res
 //         .status(404)
@@ -80,11 +79,15 @@
 // })
 
 
+
 // const PORT = process.env.PORT || 5555
 
 // app.listen(PORT, () => {
 //     console.log(`Adresse serveur : http://localhost:${PORT}`);
 // })
+
+
+//******************  deployment ****************************
 
 import express from 'express';
 import 'dotenv/config';
@@ -163,7 +166,7 @@ app.get('/favori', (req, res) => res.render('favori'));
 app.get('/search', (req, res) => res.render('search'));
 
 app.post('/api/test', (req, res) => {
-  res.json({ message: 'API çalışıyor!' });
+  res.json({ message: 'API is working!' });
 });
 
 

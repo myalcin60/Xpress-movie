@@ -1,7 +1,6 @@
 import path from 'path';
 import dotenv from 'dotenv';
 
-// .env dosyasının tam yolu
 dotenv.config({ path: path.resolve('C:/Users/yalci/Desktop/Xpress-movie/env') });
 
 import mysql from 'mysql2/promise';
@@ -13,7 +12,6 @@ const connection = await mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME
 });
-
 console.log('Connexion établie avec MySQL');
 
 export default connection;

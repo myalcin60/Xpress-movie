@@ -10,8 +10,6 @@ export default function Favori() {
     const { userInfo, setUserInfo } = useContext(GlobalContext
     )
 
-  
-
 
     useEffect(() => {
         if (!userInfo) {

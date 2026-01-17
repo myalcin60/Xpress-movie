@@ -1,3 +1,4 @@
+// import connection from '../config/db.js';
 import connection from '../config/db.config.js';
 const addFavorie = async( film_id,user_id)=>{
     try {
@@ -5,12 +6,10 @@ const addFavorie = async( film_id,user_id)=>{
         const today = new Date();
         const resultat = await connection.query(INSERT, [today, film_id, user_id]);
         return resultat;
-        
     } catch (error) {
         console.log(error);
         return null;
     }
-
 }
 const findAllFavori = async()=>{
     try {

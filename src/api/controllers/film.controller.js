@@ -47,12 +47,10 @@ const saveFilm = async (req, res) => {
         const film = await filmRepository.save(req.body, req.body.userId)
         return res.status(200).json(film)
     }
-
     catch (error) {
         console.error(error);
         return res.sendStatus(500);
     }
-
 }
 
 const searchFilm = async (req, res, next) => {

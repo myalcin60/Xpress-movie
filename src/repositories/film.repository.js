@@ -1,4 +1,5 @@
-import connection from '../config/db.config.js';
+// import connection from '../config/db.js';
+import connection from '../config/db.config.js'
 
 const save = async (film, user_id) => {
     try {
@@ -10,7 +11,6 @@ const save = async (film, user_id) => {
         console.log(error);
         return null;
     }
-
 }
 
 const findAllFilm = async () => {

@@ -19,9 +19,7 @@ export default function AdminFilms() {
     return async (event) => {
       event.preventDefault();
       try {
-
       } catch (error) {
-
       }
     }
   }
@@ -29,14 +27,12 @@ export default function AdminFilms() {
   async function suprimer(filmId) {
     try {
       await axios.delete(`/api/films/delete/${filmId}`)
-      getFilms();
-     
+      getFilms();    
     } catch (error) {
       console.error(error);
       alert('Film could not be deleted')
       navigate('/dashboard');
     }
-
   }
 
   return (
@@ -86,9 +82,7 @@ export default function AdminFilms() {
                       </form>
                     </td>
                     <td className="text-end">
-
                       <button onClick={() => suprimer(f.id)} className="btn btn-danger"> Supprimer  </button>
-
                     </td>
                   </tr>
                 ))
@@ -98,10 +92,7 @@ export default function AdminFilms() {
         </div>
       </div>
     </>
-
   );
-
-
 }
 
 
