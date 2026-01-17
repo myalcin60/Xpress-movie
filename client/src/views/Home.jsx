@@ -11,9 +11,7 @@ export default function Home() {
                     <h2> Bienvenu notre platform de films</h2>
                     <FilmCard />
                 </main>
-
             </div>
+        </>)
 
-        </>
-    )
 }

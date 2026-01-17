@@ -8,6 +8,8 @@ export default function Signup() {
     const navigate = useNavigate();
 
     async function connexion(formData) {  
+        console.log('fromdata', formData);
+        
         try {
             await axios.post("/api/signup", formData);
             navigate("/login");

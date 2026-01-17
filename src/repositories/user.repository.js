@@ -1,15 +1,24 @@
-import connection from '../config/db.config.js'
+//import connection from '../config/db.config.js'
 import bcrypt from "bcrypt";
-// import connection from '../config/db.js'
+
+import connection from '../config/db.js'
+
+import connectionPromise from '../config/db.js'
+
+
 
 
 const save = async (user) => {
+    console.log('repo req user', user);
+    const connection = await connectionPromise;
     const saltRounds = 10;
     const password = await bcrypt.hash(user.password, saltRounds);
     try {
         const INSERT = "INSERT INTO users values (null, ?, ?, ?,?,?)"
         const resultat = await connection.query(INSERT, [user.nom, user.prenom, user.email, password, user.role]);
         user.id = resultat[0].insertId
+        console.log('response repo user', user);
+        
         return user;
     } catch (error) {
         console.log(error);
@@ -18,6 +27,7 @@ const save = async (user) => {
 }
 
 const getUser = async (email)=>{
+    const connection = await connectionPromise;
     try {
         const SELECT = "SELECT * from users where email = ?"
         const user = await connection.query(SELECT, email) 
@@ -30,6 +40,7 @@ const getUser = async (email)=>{
 }
 
 const deleteUser = async (id) => {
+    const connection = await connectionPromise;
     try {
         const DELETE ="DELETE from users where id=?"
         return await connection.query(DELETE, [id]);
@@ -41,6 +52,7 @@ const deleteUser = async (id) => {
 }
 
 const updateUser = async (user,id) => {
+    const connection = await connectionPromise;
      try {
         const UPDATE = "UPDATE users set nom=?, prenom= ?, email= ?,  role= ?  where id =?"
         const resultat = await connection.query(UPDATE, [user.nom, user.prenom, user.email,  user.role, id]); 
@@ -53,6 +65,7 @@ const updateUser = async (user,id) => {
     }
 }
 const updatePassword = async (id, pass) => {
+    const connection = await connectionPromise;
     const saltRounds = 10;
     const password = await bcrypt.hash(pass, saltRounds);
     try {

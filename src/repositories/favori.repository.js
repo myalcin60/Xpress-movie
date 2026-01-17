@@ -1,6 +1,8 @@
-// import connection from '../config/db.js';
-import connection from '../config/db.config.js';
+import connection from '../config/db.js';
+//import connection from '../config/db.config.js';
+import connectionPromise from '../config/db.js'
 const addFavorie = async( film_id,user_id)=>{
+  const connection = await connectionPromise;
     try {
         const INSERT = "INSERT into favoris VALUES (null, ?,?,? );"
         const today = new Date();
@@ -12,6 +14,7 @@ const addFavorie = async( film_id,user_id)=>{
     }
 }
 const findAllFavori = async()=>{
+  const connection = await connectionPromise;
     try {
         const SELECT = "SELECT * FROM films JOIN favoris as f on f.film_id = films.id; "
         const [favoris] = await connection.query(SELECT);
@@ -22,6 +25,7 @@ const findAllFavori = async()=>{
     }
 }
 const findFavoriFilmById = async (id, user_id) => {
+  const connection = await connectionPromise;
     try {
         const SELECT = "SELECT * FROM films JOIN favoris as f on f.film_id = films.id where films.id =? and f.user_id=?; "
         const [film] = await connection.query(SELECT, [id, user_id]);
@@ -33,6 +37,7 @@ const findFavoriFilmById = async (id, user_id) => {
 }
 
 const findUserFavori = async (user_id) => {
+  const connection = await connectionPromise;
     try {
         const SELECT = "SELECT * FROM films JOIN favoris as f on f.film_id = films.id where f.user_id =?; "
         const [film] = await connection.query(SELECT, [user_id]);
@@ -44,6 +49,7 @@ const findUserFavori = async (user_id) => {
 }
 
 const deleteFavoriFilmById = async (id) => {
+  const connection = await connectionPromise;
     try {
         const DELETE = "Delete from favoris where id=?"
         await connection.query(DELETE, id);
