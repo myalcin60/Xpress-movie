@@ -1,10 +1,10 @@
-import connection from '../config/db.js';
+//import connection from '../config/db.js';
 //import connection from '../config/db.config.js'
 import connectionPromise from '../config/db.js'
 
 const save = async (film, user_id) => {
     const connection = await connectionPromise;
-  
+
     try {
         const INSERT = "INSERT INTO films values (null, ?, ?, ?,?,?,?)"
         const resultat = await connection.query(INSERT, [film.titre, film.genre, film.description, film.date, film.image, user_id]);

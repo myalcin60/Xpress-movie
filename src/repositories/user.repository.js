@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 
-import connection from '../config/db.js'
+//import connection from '../config/db.js'
 //import connection from '../config/db.config.js'
 import connectionPromise from '../config/db.js'
 
